@@ -1,0 +1,20 @@
+
+
+p {
+  font-size: 25px;
+}
+
+h1 {
+  font-size: 85px;
+}
+
+.center {
+    position: absolute;
+    width: 950px;
+    height: 275px;
+    top: 50%;
+    left: 50%;
+    margin-left: -475px;
+    margin-top: -250px;
+    text-align: center;
+}

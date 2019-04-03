@@ -1,0 +1,6 @@
+[12-Aug-2018 15:23:52 Europe/Paris] PHP Warning:  basename() expects parameter 1 to be string, array given in /home/craftyo1/public_html/testsu/src/SUpdateServer/PanelController.php on line 81
+[12-Aug-2018 15:23:52 Europe/Paris] PHP Warning:  move_uploaded_file() expects parameter 1 to be string, array given in /home/craftyo1/public_html/testsu/src/SUpdateServer/PanelController.php on line 82
+[12-Aug-2018 15:23:52 Europe/Paris] PHP Warning:  basename() expects parameter 1 to be string, array given in /home/craftyo1/public_html/testsu/src/SUpdateServer/PanelController.php on line 81
+[12-Aug-2018 15:23:52 Europe/Paris] PHP Warning:  move_uploaded_file() expects parameter 1 to be string, array given in /home/craftyo1/public_html/testsu/src/SUpdateServer/PanelController.php on line 82
+[12-Aug-2018 15:23:52 Europe/Paris] PHP Warning:  basename() expects parameter 1 to be string, array given in /home/craftyo1/public_html/testsu/src/SUpdateServer/PanelController.php on line 81
+[12-Aug-2018 15:23:52 Europe/Paris] PHP Warning:  move_uploaded_file() expects parameter 1 to be string, array given in /home/craftyo1/public_html/testsu/src/SUpdateServer/PanelController.php on line 82

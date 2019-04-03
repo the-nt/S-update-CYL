@@ -1,0 +1,84 @@
+{% extends 'templates/base.twig' %}
+
+{% block title %}Explorer{% endblock %}
+
+{% block content %}
+    <div class="col-md-12 mt">
+        <div class="content-panel">
+            <div class="border-head">
+                <h3>Exploreur de fichiers</h3>
+            </div>
+            <table class="table table-hover" style="color: #00c8ff">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nom du fichier</th>
+                    <th>Taille</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for file in files %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>
+                            <a href="{{ app.request.basepath }}/panel/explorer?file={{ (file.url ) }}">{{ file.name }}</a>
+                        </td>
+                        <td>{{ file.size }}</td>
+                        <td>
+                            {% if file.name != '..' %}
+                                <a href="#" data-toggle="modal" data-target="#rename{{ loop.index }}" style="color: #14ff1c">
+                                    <i class="fas fa-pencil-alt fa-2x"></i>
+                                </a>
+                                <a href="{{ app.request.basepath }}/panel/del?file={{ file.url|replace({" explorer" : " file"})}}" onclick="return confirm('Êtes-vous sûr de bien vouloir supprimer cet élément ?');" style="color: #ff0c00">
+                                    <i class="fas fa-times fa-2x"></i>
+                                </a>
+                                <div class="modal fade" id="rename{{ loop.index }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none; color: #00c8ff">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <form class="form-horizontal" role="form" action="" method="POST">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color: #00c8ff">×</button>
+                                                    <h4 class="modal-title" id="myModalLabel" style="color: #00c8ff">Renommer</h4>
+                                                </div>
+                                                <input type="hidden" name="url" value="{{ file.url}}"/>
+                                                <div class="modal-body" style="padding: 30px; color: #3c50cb">
+                                                    <input type="text" class="form-control" name="rename" value="{{ file.name }}" placeholder="Nom du fichier ou dossier" autocomplete="off" style="color: #00c8ff">
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal" style="color: #00c8ff">Close</button>
+                                                    <button type="submit" class="btn btn-primary" style="color: #46ff50">Appliquer</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <form action="upload" class="dropzone" id="dropzoneUpload" enctype="multipart/form-data" method="post" style="color: #00c8ff">
+                <input name="location" type="hidden" value="{{ url }}"/>
+                <div class="fallback">
+                    <input name="file" type="file" multiple/>
+                </div>
+            </form>
+            <button id="home" style="margin-right: 300px; color: #00c8ff; font-size: 20px" onclick="window.location.href='home'">Acceuil</button>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        Dropzone.autoDiscover = false;
+        let myDropzone = new Dropzone("#dropzoneUpload");
+        myDropzone.on("success", function(file) {
+            console.log('SUCCESS');
+            location.reload();
+        });
+    </script>
+
+
+{% endblock %}

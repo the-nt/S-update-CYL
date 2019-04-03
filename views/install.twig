@@ -1,0 +1,52 @@
+
+
+{% extends 'templates/base.twig' %}
+
+{% block title %}Instalation{% endblock %}
+
+{% block head %}
+    <!-- Install CSS -->
+    <link href="{{ resPath ~ "css/install.css" }}" rel="stylesheet" />
+
+    <!-- Lato Google Font -->
+    <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+{% endblock %}
+
+{% block content %}
+    {# Setting the background black if the server is not activated #}
+    {% if not serverActivated %}
+        <style>
+            html, body {
+                background: black;
+            }
+        </style>
+    {% else %}
+        <style>
+            html, body {
+                background-image: url({{ resPath ~ "images/background.png" }});
+            }
+        </style>
+    {% endif %}
+    <div class='fulldiv'>
+        <div class="center" id="centerDiv">
+            <img src="{{ resPath ~ "images/icon.png" }}" />
+
+            <p>Bienvenue</p>
+
+            <br />
+            <form method="post" target="" id="passwordForm">
+                <label for="password" style="color: #3c50cb">Mot de Passe</label> : <input class="text-field" type="password" name="password" id="password" style="margin-right: 55px; color: #14ff1c;" onkeyup="checkFields(); return false;" required/><br />
+                <label for="vpassword" style="color: #3c50cb">Confirmation</label> : <input class="text-field" type="password" name="vpassword" id="vpassword" style="margin-right: 56px; color: #14ff1c;" onkeyup="checkFields(); return false;" required/><br /><br />
+            </form>
+
+            <button class="submit-button" onclick="checkAndSubmit()" style="margin-right: 50px; color: #3247ff; font-size: 20px">Commancer</button>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+    <!-- The FieldChecker JS -->
+    <!-- The FieldChecker JS -->
+    <script src="{{ resPath ~ 'js/fieldChecker.js' }}"></script>
+{% endblock %}

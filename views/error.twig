@@ -1,0 +1,40 @@
+{% extends 'templates/base.twig' %}
+
+{% block title %}Erreur{% endblock %}
+
+{% block head %}
+    <!-- Error page CSS -->
+    <link href="{{ resPath ~ "css/error.css" }}" rel="stylesheet" />
+{% endblock %}
+
+{% block content %}
+    <style>
+        body {
+            background-image: url({{ resPath ~ "images/background.png" }});
+        }
+    </style>
+    <div class='fulldiv'>
+        <div class="center">
+            <img src="{{ resPath ~ 'images/logo.png' }}" />
+
+            <br />
+            <br />
+            <br />
+
+            <h1>{{ title }}</h1>
+
+            <br/>
+
+            <p>
+                {{ message }}
+
+                <br />
+                <br />
+                <br />
+
+                <button id="home" onclick="window.location.href = './home'" style="color: #3247ff; font-size: 20px">Accueil</button>
+                <button id="prev-page" onclick="history.go(-1);" style="color: #3247ff; font-size: 20px">Retour</button>
+            </p>
+        </div>
+    </div>
+{% endblock %}
